@@ -68,7 +68,7 @@ void bullet_locate(Enemy *enemy, Bullet *bullet) {
 
 void bullet_act(Bullet *bullet, int plus_x, int plus_y) {
 
-	int k;
+	int k = 0;
 
 	for (k = 0; k < bullet->cnt; k++ ) {
 		if (bullet[k].flag == 1) {
@@ -77,5 +77,4 @@ void bullet_act(Bullet *bullet, int plus_x, int plus_y) {
 			DrawCircle(bullet[k].x, bullet[k].y, 2, bullet[k].color, TRUE);
 		}
 	}
-
 }
