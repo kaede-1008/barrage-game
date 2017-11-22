@@ -15,7 +15,7 @@ void player_move(void) {
 
 void player_shot(void) {
 
-	int mouse_x, int mouse_y;
+	int mouse_x, mouse_y;
 	unsigned int color = GetColor(0, 128, 225);
 
 
