@@ -7,12 +7,12 @@ typedef struct {
 } Enemy;
 
 typedef struct {
-	double vx, vy, sp, ang;
-	int x, y, flag = 0, cnt = 0, pattern, kind, img;
+	double x, y, vx, vy, sp, ang;
+	int flag = 0, cnt = 0, pattern, kind, img;
 	unsigned int color;
 } Bullet;
 
 void enemy_init(Enemy *enemy);
 void enemy_act(Enemy *enemy);
 void bullet_locate(Enemy *enemy, Bullet *bullet);
-void bullet_act(Bullet *bullet, int plus_x, int plus_y);
+void bullet_act(Bullet *bullet);

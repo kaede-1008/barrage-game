@@ -59,22 +59,30 @@ void bullet_locate(Enemy *enemy, Bullet *bullet) {
 
 		bullet[bullet->cnt].x = enemy->x;	//íeÇ…ìGÇÃç¿ïWÇë„ì¸
 		bullet[bullet->cnt].y = enemy->y;
-		DrawCircle(bullet[bullet->cnt].x, bullet[bullet->cnt].y, 2, bullet[bullet->cnt].color, TRUE);	//â~ÇÃï`âÊ
+		DrawCircleAA(bullet[bullet->cnt].x, bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//â~ÇÃï`âÊ
 		bullet[bullet->cnt].flag = 1;
 
 		bullet->cnt++;  //íeÇÃçXêV
 	}
 }
 
-void bullet_act(Bullet *bullet, int plus_x, int plus_y) {
+void bullet_act(Bullet *bullet) {
 
-	int k = 0;
+	int k = 0, mouse_x, mouse_y;
+
+	GetMousePoint(&mouse_x, &mouse_y);
 
 	for (k = 0; k < bullet->cnt; k++ ) {
 		if (bullet[k].flag == 1) {
-			bullet[k].x += plus_x;	//ÇªÇÍÇºÇÍÇÃíeÇÃç¿ïWçXêV
-			bullet[k].y += plus_y;
-			DrawCircle(bullet[k].x, bullet[k].y, 2, bullet[k].color, TRUE);
+			if ( bullet[k].x > 320 ) {
+				bullet[k].x -= 3;	//ÇªÇÍÇºÇÍÇÃíeÇÃç¿ïWçXêV
+			}
+			else {
+				bullet[k].x += 3;
+			}
+		
+			bullet[k].y += (bullet[k].x - mouse_x) / (bullet[k].y - mouse_y);
+			DrawCircleAA(bullet[k].x, bullet[k].y, 2, 32, bullet[k].color, TRUE);
 		}
 	}
 }

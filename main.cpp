@@ -2,14 +2,12 @@
 #include <iostream>
 #include <stdlib.h>
 #include "enemy.h"
-
-void chara_move(unsigned int color);
+#include "player.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	int count = 0;
 	int x = 0, y = 0;
-	unsigned int Cr = GetColor(0, 0, 255);
 
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{
@@ -32,12 +30,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		enemy_act(&enemy);
 		if (bullet->cnt <= 99) {
 			bullet_locate(&enemy, bullet);
-			bullet_act(bullet, 0, 3);
-			bullet_act(bullet, -3, 3);
-			bullet_act(bullet, 3, 3);
+			bullet_act(bullet);
 		}
 
-		chara_move(Cr);
+		player_move();
 
 		ScreenFlip();
 	}
@@ -47,11 +43,3 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return 0;				// ソフトの終了 
 }
 
-void chara_move(unsigned int color) {
-
-	int mouse_x, mouse_y;
-
-	GetMousePoint(&mouse_x, &mouse_y);
-
-	DrawCircle(mouse_x, mouse_y, 15, color, TRUE);
-}
