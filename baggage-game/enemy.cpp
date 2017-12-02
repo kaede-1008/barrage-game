@@ -25,7 +25,7 @@ void enemy_act(Enemy *enemy) {
 	DrawCircle(enemy->x, enemy->y, 15, e_color, TRUE);
 	enemy->cnt++;
 
-	if (enemy->y == 30) {	//Œã‚ÅŒ¸‚ç‚·
+	if (enemy->y == 30) {	//å¾Œã§æ¸›ã‚‰ã™
 		enemy->x += 5;
 		if (enemy->x == 625) {
 			enemy->y += 5;
@@ -57,12 +57,12 @@ void bullet_locate(Enemy *enemy, Bullet *bullet) {
 
 		bullet[bullet->cnt].color = GetColor(255, 128, 128);
 
-		bullet[bullet->cnt].x = enemy->x;	//’e‚É“G‚ÌÀ•W‚ğ‘ã“ü
+		bullet[bullet->cnt].x = enemy->x;	//å¼¾ã«æ•µã®åº§æ¨™ã‚’ä»£å…¥
 		bullet[bullet->cnt].y = enemy->y;
-		DrawCircleAA(bullet[bullet->cnt].x, bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//‰~‚Ì•`‰æ
+		DrawCircleAA(bullet[bullet->cnt].x, bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//å††ã®æç”»
 		bullet[bullet->cnt].is_Bullet = 1;
 
-		bullet->cnt++;  //’e‚ÌXV
+		bullet->cnt++;  //å¼¾ã®æ›´æ–°
 	}
 }
 
@@ -78,7 +78,7 @@ void bullet_act(Bullet *bullet) {
 				bullet_speed(bullet);
 			}
 			if (bullet[k].inx > 320) {
-				bullet[k].x -= 3;	//‚»‚ê‚¼‚ê‚Ì’e‚ÌÀ•WXV
+				bullet[k].x -= 3;	//ãã‚Œãã‚Œã®å¼¾ã®åº§æ¨™æ›´æ–°
 			}
 			else {
 				bullet[k].x += 3;
@@ -98,5 +98,4 @@ void bullet_speed(Bullet *bullet) {
 		bullet[k].is_sp = 1;
 
 	}
-	
 }
