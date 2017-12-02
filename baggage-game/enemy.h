@@ -1,13 +1,13 @@
 #pragma once
 
 typedef struct {
-	double vx, vy, sp, ang;	//‘¬“xx¬•ª, ‘¬“xy¬•ª, ‘¬“x, Šp“x
+	double vx, vy, sp, ang;	//é€Ÿåº¦xæˆåˆ†, é€Ÿåº¦yæˆåˆ†, é€Ÿåº¦, è§’åº¦
 	int x, y, flag, cnt = 1, pattern, kind, hp, hp_max, img;
 	int bar_time, bar_kind, color, status, w_time;
 } Enemy;
 
 typedef struct {
-	double x, y, vx, vy, sp, ang, inx, iny;  //’e‚ÌÀ•W, ’e‚Ì‘¬‚³‚Ì¬•ª, ‘¬‚³, Šp“x, ‰ŠúˆÊ’u
+	double x, y, vx, vy, sp, ang, inx, iny;  //å¼¾ã®åº§æ¨™, å¼¾ã®é€Ÿã•ã®æˆåˆ†, é€Ÿã•, è§’åº¦, åˆæœŸä½ç½®
 	int is_Bullet = 0, cnt = 0, pattern, kind, img, is_sp = 0;
 	unsigned int color;
 } Bullet;
