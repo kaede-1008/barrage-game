@@ -19,7 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetOutApplicationLogValidFlag(FALSE);
 
 	Enemy enemy;
-	Bullet bullet[100];
+	Bullet bullet[500];
 
 	enemy_init(&enemy);
 
@@ -28,7 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		SetDrawScreen(DX_SCREEN_BACK);
 
 		enemy_act(&enemy);
-		if (bullet->cnt <= 99) {
+		if (bullet->cnt <= 499) {
 			bullet_locate(&enemy, bullet);
 			bullet_act(bullet);
 		}
