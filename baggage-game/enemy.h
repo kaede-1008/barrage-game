@@ -7,7 +7,7 @@ typedef struct {
 } Enemy;
 
 typedef struct {
-	double x, y, vx, vy, sp, ang, inx, iny;  //’e‚ÌÀ•W, ’e‚Ì‘¬‚³‚Ì¬•ª, ‘¬‚³, Šp“x, ‰ŠúˆÊ’u
+	float x, y, vx, vy, sp, ang, inx, iny;  //’e‚ÌÀ•W, ’e‚Ì‘¬‚³‚Ì¬•ª, ‘¬‚³, Šp“x, ‰ŠúˆÊ’u
 	int is_Bullet = 0, cnt = 0, pattern, kind, img, is_sp = 0;
 	unsigned int color;
 } Bullet;
@@ -17,3 +17,4 @@ void enemy_act(Enemy *enemy);
 void bullet_locate(Enemy *enemy, Bullet *bullet);
 void bullet_act(Bullet *bullet);
 void bullet_speed(Bullet *bullet);
+int is_bullet(double x, double y);
