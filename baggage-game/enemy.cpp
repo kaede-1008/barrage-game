@@ -59,7 +59,7 @@ void bullet_locate(Enemy *enemy, Bullet *bullet) {
 
 		bullet[bullet->cnt].x = enemy->x;	//弾に敵の座標を代入
 		bullet[bullet->cnt].y = enemy->y;
-		DrawCircleAA(bullet[bullet->cnt].x, bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//円の描画
+		DrawCircleAA((int)bullet[bullet->cnt].x, (int)bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//円の描画
 		bullet[bullet->cnt].is_Bullet = 1;
 
 		bullet->cnt++;  //弾の更新
@@ -84,7 +84,9 @@ void bullet_act(Bullet *bullet) {
 				bullet[k].x += 3;
 			}
 			bullet[k].y += 3 * bullet[k].sp;
-			DrawCircleAA(bullet[k].x, bullet[k].y, 2, 32, bullet[k].color, TRUE);
+			if (is_bullet(bullet[k].x, bullet[k].y) == 1) {
+				DrawCircleAA(bullet[k].x, bullet[k].y, 2, 32, bullet[k].color, TRUE);
+			}
 		}
 	}
 }
@@ -98,4 +100,14 @@ void bullet_speed(Bullet *bullet) {
 		bullet[k].is_sp = 1;
 
 	}
+}
+
+int is_bullet(double x, double y) {
+
+	if (x > 0 && x < 640) {
+		if (y > 0 && y < 480) {
+			return 1;
+		}
+	}
+	return 0;
 }
