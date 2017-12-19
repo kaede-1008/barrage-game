@@ -25,7 +25,7 @@ void enemy_act(Enemy *enemy) {
 	DrawCircle(enemy->x, enemy->y, 15, e_color, TRUE);
 	enemy->cnt++;
 
-	if (enemy->y == 30) {	//��Ō��炷
+	if (enemy->y == 30) {	//後で減らす
 		enemy->x += 5;
 		if (enemy->x == 625) {
 			enemy->y += 5;
@@ -57,12 +57,12 @@ void bullet_locate(Enemy *enemy, Bullet *bullet) {
 
 		bullet[bullet->cnt].color = GetColor(255, 128, 128);
 
-		bullet[bullet->cnt].x = enemy->x;	//�e�ɓG�̍��W����
+		bullet[bullet->cnt].x = enemy->x;	//弾に敵の座標を代入
 		bullet[bullet->cnt].y = enemy->y;
-		DrawCircleAA((int)bullet[bullet->cnt].x, (int)bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//�~�̕`��
+		DrawCircleAA((int)bullet[bullet->cnt].x, (int)bullet[bullet->cnt].y, 2, 32, bullet[bullet->cnt].color, TRUE);	//円の描画
 		bullet[bullet->cnt].is_Bullet = 1;
 
-		bullet->cnt++;  //�e�̍X�V
+		bullet->cnt++;  //弾の更新
 	}
 }
 
@@ -78,7 +78,7 @@ void bullet_act(Bullet *bullet) {
 				bullet_speed(bullet);
 			}
 			if (bullet[k].inx > 320) {
-				bullet[k].x -= 3;	//���ꂼ��̒e�̍��W�X�V
+				bullet[k].x -= 3;	//それぞれの弾の座標更新
 			}
 			else {
 				bullet[k].x += 3;
