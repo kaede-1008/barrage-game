@@ -14,6 +14,7 @@ void enemy_init(Enemy *enemy) {
 	enemy->kind = 0;
 	enemy->hp = 10000;
 	enemy->hp_max = enemy->hp;
+	enemy->lo_flag = 0;
 }
 
 void enemy_act(Enemy *enemy) {
@@ -25,30 +26,43 @@ void enemy_act(Enemy *enemy) {
 	DrawCircle(enemy->x, enemy->y, 15, e_color, TRUE);
 	enemy->cnt++;
 
-	if (enemy->y == 30) {	//後で減らす
-		enemy->x += 5;
-		if (enemy->x == 625) {
-			enemy->y += 5;
-		}
+	/*if (enemy->y == 30) {	//後で減らす
+	enemy->x += 5;
+	if (enemy->x == 625) {
+	enemy->y += 5;
+	}
 	}
 	else if (enemy->x == 625) {
-		enemy->y += 5;
-		if (enemy->y == 465) {
-			enemy->x -= 5;
-		}
+	enemy->y += 5;
+	if (enemy->y == 465) {
+	enemy->x -= 5;
+	}
 	}
 	else if (enemy->y == 465) {
-		enemy->x -= 5;
-		if (enemy->x == 15) {
-			enemy->y -= 5;
-		}
+	enemy->x -= 5;
+	if (enemy->x == 15) {
+	enemy->y -= 5;
+	}
 	}
 	else if (enemy->x == 15) {
-		enemy->y -= 5;
-		if (enemy->y == 30) {
-			enemy->x += 5;
-		}
+	enemy->y -= 5;
+	if (enemy->y == 30) {
+	enemy->x += 5;
 	}
+	}*/
+	/*if (enemy->x == 400) {
+	enemy->lo_flag = 1;
+	}
+	else if (enemy->x == 240) {
+	enemy->lo_flag = 0;
+	}
+
+	if (enemy->lo_flag == 0) {
+	enemy->x += 2;
+	}
+	else if (enemy->lo_flag == 1) {
+	enemy->x -= 2;
+	}*/
 }
 
 void bullet_locate(Enemy *enemy, Bullet *bullet) {
@@ -72,7 +86,7 @@ void bullet_act(Bullet *bullet) {
 
 	for (k = 0; k < bullet->cnt; k++) {
 		if (bullet[k].is_Bullet == 1) {
-			if ( bullet[k].is_sp == 0 ) {
+			if (bullet[k].is_sp == 0) {
 				bullet[k].inx = bullet[k].x;
 				bullet[k].iny = bullet[k].y;
 				bullet_speed(bullet);
@@ -94,9 +108,9 @@ void bullet_act(Bullet *bullet) {
 void bullet_speed(Bullet *bullet) {
 
 	int k;
-	for ( k = 0; k < bullet->cnt; k++ ) {
+	for (k = 0; k < bullet->cnt; k++) {
 
-		bullet[k].sp = (bullet[k].iny - 280 ) / (bullet[k].inx - 320);
+		bullet[k].sp = (bullet[k].iny - 280) / (bullet[k].inx - 320);
 		bullet[k].is_sp = 1;
 
 	}

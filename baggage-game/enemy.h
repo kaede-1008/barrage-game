@@ -1,13 +1,13 @@
 #pragma once
 
 typedef struct {
-	double vx, vy, sp, ang;	//速度x成分, 速度y成分, 速度, 角度
-	int x, y, flag, cnt = 1, pattern, kind, hp, hp_max, img;
-	int bar_time, bar_kind, color, status, w_time;
+	double x, y, vx, vy, sp, ang;
+	int flag, cnt = 1, pattern, kind, hp, hp_max, img;
+	int bar_time, bar_kind, color, status, w_time, lo_flag;
 } Enemy;
 
 typedef struct {
-	float x, y, vx, vy, sp, ang, inx, iny;  //弾の座標, 弾の速さの成分, 速さ, 角度, 初期位置
+	float x, y, vx, vy, sp, ang, inx, iny;
 	int is_Bullet = 0, cnt = 0, pattern, kind, img, is_sp = 0;
 	unsigned int color;
 } Bullet;

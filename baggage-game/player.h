@@ -1,7 +1,7 @@
 #pragma once
 
 #include "enemy.h"
-#define PLAYER_SHOT1 3;
+#define PLAYER_SHOT1 3
 #define PLAYER_SHOT2 400
 
 typedef struct {

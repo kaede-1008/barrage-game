@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include "enemy.h"
 #include "player.h"
+#include "bullet.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	int count = 0;
-	int x = 0, y = 0;
 
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{
@@ -20,6 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	Enemy enemy;
 	Bullet bullet[500];
+	int count = 0;
 
 	enemy_init(&enemy);
 
@@ -28,10 +28,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		SetDrawScreen(DX_SCREEN_BACK);
 
 		enemy_act(&enemy);
-		if (bullet->cnt <= 499) {
-			bullet_locate(&enemy, bullet);
-			bullet_act(bullet);
-		}
+		shot_main(enemy.x, enemy.y, count);
+		count++;
+
+		/*if (bullet->cnt <= 499) {
+		bullet_locate(&enemy, bullet);
+		bullet_act(bullet);
+		}*/
 
 		player_move();
 
